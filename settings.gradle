@@ -1,0 +1,3 @@
+rootProject.name = "BscScan"
+include ':app'
+include ':bsc'
