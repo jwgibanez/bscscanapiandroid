@@ -25,6 +25,12 @@ task sourceJar(type: Jar) {
 group = GROUP
 version = VERSION_NAME
 
+signing {
+    if (!VERSION_NAME.contains("-SNAPSHOT")) {
+        sign publishing.publications
+    }
+}
+
 publishing {
     publications {
         bscScanApiAndroid(MavenPublication) {
@@ -61,7 +67,11 @@ publishing {
     repositories {
         maven {
             name 'sonatype'
-            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            if (!VERSION_NAME.contains("-SNAPSHOT")) {
+                url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            } else {
+                url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            }
             credentials {
                 username ossrhUsername
                 password ossrhPassword
