@@ -2,7 +2,6 @@ package xyz.metahash.apps.bscscan.tests
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
-import xyz.metahash.apps.bscscan.BuildConfig
 import xyz.metahash.apps.bscscan.BuildConfig.API_KEY
 import xyz.metahash.apps.bscscan.getRetrofit
 import xyz.metahash.apps.bscscan.sleep
