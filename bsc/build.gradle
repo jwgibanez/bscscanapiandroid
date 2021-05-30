@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'kotlin-kapt'
     id 'maven-publish'
     id 'signing'
 }
@@ -12,6 +13,11 @@ java {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation 'com.google.dagger:dagger:2.35.1'
+    kapt 'com.google.dagger:dagger-compiler:2.35.1'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'

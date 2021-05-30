@@ -3,17 +3,13 @@ package xyz.metahash.apps.bscscan.tests
 import org.hamcrest.MatcherAssert
 import org.junit.Test
 import xyz.metahash.apps.bscscan.BuildConfig.API_KEY
-import xyz.metahash.apps.bscscan.getRetrofit
 import xyz.metahash.apps.bscscan.sleep
-import xyz.metahash.chains.bsc.bscscan.services.TransactionService
+import xyz.metahash.chains.bsc.bscscan.di.BscScanApiImpl
 
-class TransactionServiceTest {
-    private val service by lazy {
-        getRetrofit().create(TransactionService::class.java)
-    }
+class TransactionServiceTest: BscScanApiImpl() {
     @Test
     fun transactionServiceTest_getTransactionReceiptStatus() {
-        val testObserver = service.getTransactionReceiptStatus(
+        val testObserver = transactionService.getTransactionReceiptStatus(
             txHash = "0xe9975702518c79caf81d5da65dea689dcac701fcdd063f848d4f03c85392fd00"
             , apiKey = API_KEY
         ).test()
